@@ -12,9 +12,16 @@ namespace IRF_Beadando
 {
     public partial class Form1 : Form
     {
+        Database1Entities context = new Database1Entities();
+        List<Table> Jatekosok;
         public Form1()
         {
             InitializeComponent();
+            LoadData();
+        }
+        private void LoadData()
+        {
+            Jatekosok = context.Tables.ToList();
         }
     }
 }
