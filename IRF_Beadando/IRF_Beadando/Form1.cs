@@ -35,30 +35,13 @@ namespace IRF_Beadando
         {
             InitializeComponent();
             LoadData();
-            try
-            {
-                xlApp = new Excel.Application();
-                xlWB = xlApp.Workbooks.Add(Missing.Value);
-                xlSheet = xlWB.ActiveSheet;
-                CreateTable();
-                
-                xlApp.Visible = true;
-                xlApp.UserControl = true;
-            }
-            catch (Exception ex)
-            {
-                string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
-                MessageBox.Show(errMsg, "Error");
+            JatekosComboBox.DisplayMember = "Jatekos_nev";
 
-                xlWB.Close(false, Type.Missing, Type.Missing);
-                xlApp.Quit();
-                xlWB = null;
-                xlApp = null;
-            }
-        }
+        }   
         private void LoadData()
         {
             Jatekosok = context.Tables.ToList();
+            JatekosComboBox.DataSource = Jatekosok;
         }
         void CreateTable()
         {
@@ -100,6 +83,52 @@ namespace IRF_Beadando
                 
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                xlApp = new Excel.Application();
+                xlWB = xlApp.Workbooks.Add(Missing.Value);
+                xlSheet = xlWB.ActiveSheet;
+                CreateTable();
+
+                xlApp.Visible = true;
+                xlApp.UserControl = true;
+            }
+            catch (Exception ex)
+            {
+                string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
+                MessageBox.Show(errMsg, "Error");
+
+                xlWB.Close(false, Type.Missing, Type.Missing);
+                xlApp.Quit();
+                xlWB = null;
+                xlApp = null;
+            }
+        
+        }
+
+        private void JatekosComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = ((Table)JatekosComboBox.SelectedItem).Golok.ToString();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = ((Table)JatekosComboBox.SelectedItem).Golok.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = ((Table)JatekosComboBox.SelectedItem).Golpasszok.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = ((Table)JatekosComboBox.SelectedItem).Csapat.ToString();
         }
     }
 }
