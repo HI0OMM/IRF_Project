@@ -70,6 +70,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Assist.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entities\Gol.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entities\Team.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

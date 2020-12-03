@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using IRF_Beadando.Entities;
 
 namespace IRF_Beadando
 {
@@ -35,9 +36,29 @@ namespace IRF_Beadando
         {
             InitializeComponent();
             LoadData();
+            LoadPictures();
             JatekosComboBox.DisplayMember = "Jatekos_nev";
 
-        }   
+        }
+        private void LoadPictures()
+        {
+            Gol Goal = new Gol();
+            Goal.Left = button2.Left + button2.Width/2-29;
+            Goal.Top = button2.Top-58;
+            mainPanel.Controls.Add(Goal);
+
+            Team Csapat = new Team();
+            Csapat.Left = button4.Left + button4.Width / 2-29;
+            Csapat.Top = button4.Top - 58;
+            mainPanel.Controls.Add(Csapat);
+
+            Assist Golpassz = new Assist();
+            Golpassz.Left = button3.Left + button4.Width / 2 - 29;
+            Golpassz.Top = button3.Top - 58;
+            mainPanel.Controls.Add(Golpassz);
+
+
+        }
         private void LoadData()
         {
             Jatekosok = context.Tables.ToList();
