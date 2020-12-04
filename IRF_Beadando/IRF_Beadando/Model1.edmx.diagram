@@ -4,8 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a123b2ca4cf44c5fb0bbd337840a7ae7" Name="Diagram1">
-        <EntityTypeShape EntityType="Database1Model.Table" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="78a6c98c0b05492f9d256541ac8625a7" Name="Diagram1">
+        <EntityTypeShape EntityType="FociadatModel.Table" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FociadatModel.Table2" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="FociadatModel.FK_Table_ToTable2" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

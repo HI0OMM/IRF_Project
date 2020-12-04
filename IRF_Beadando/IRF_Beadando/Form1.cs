@@ -15,8 +15,9 @@ namespace IRF_Beadando
 {
     public partial class Form1 : Form
     {
-        Database1Entities context = new Database1Entities();
+        FociadatEntities context = new FociadatEntities();
         List<Table> Jatekosok;
+        List<Table2> Posztok;
         string[] headers = new string[]
 {
                 "ID",
@@ -37,7 +38,9 @@ namespace IRF_Beadando
             InitializeComponent();
             LoadData();
             LoadPictures();
-            JatekosComboBox.DisplayMember = "Jatekos_nev";
+            JatekosListBox.DisplayMember = "Jatekos_nev";
+            PosztComboBox.DisplayMember = "Poszt_nev";
+            
 
         }
         private void LoadPictures()
@@ -61,8 +64,12 @@ namespace IRF_Beadando
         }
         private void LoadData()
         {
+            
             Jatekosok = context.Tables.ToList();
-            JatekosComboBox.DataSource = Jatekosok;
+            JatekosListBox.DataSource = Jatekosok;
+            Posztok = context.Table2.ToList();
+            PosztComboBox.DataSource = Posztok;
+            textBox1.Text = ((Table)JatekosListBox.SelectedItem).Gol.ToString();
         }
         void CreateTable()
         {
@@ -74,12 +81,12 @@ namespace IRF_Beadando
             int counter = 0;
             foreach (Table t in Jatekosok)
             {
-                values[counter, 0] = t.Jatekos_id;
+                values[counter, 0] = t.Jatekos_Id;
                 values[counter, 1] = t.Jatekos_nev;
-                values[counter, 2] = t.Golok;
-                values[counter, 3] = t.Golpasszok;
+                values[counter, 2] = t.Gol;
+                values[counter, 3] = t.Golpassz;
                 values[counter, 4] = t.Jatekperc;
-                values[counter, 5] = t.Poszt;
+                values[counter, 5] = t.Poszt_fk;
                 values[counter, 6] = t.Csapat;
                 values[counter, 7] = String.Format("={0}/{1}", GetCell(counter + 2, 5), GetCell(counter + 2, 3));
                 
@@ -131,25 +138,54 @@ namespace IRF_Beadando
         
         }
 
-        private void JatekosComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            textBox1.Text = ((Table)JatekosComboBox.SelectedItem).Golok.ToString();
-
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = ((Table)JatekosComboBox.SelectedItem).Golok.ToString();
+            textBox1.Text = ((Table)JatekosListBox.SelectedItem).Gol.ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox1.Text = ((Table)JatekosComboBox.SelectedItem).Golpasszok.ToString();
+            textBox1.Text = ((Table)JatekosListBox.SelectedItem).Golpassz.ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            textBox1.Text = ((Table)JatekosComboBox.SelectedItem).Csapat.ToString();
+            textBox1.Text = ((Table)JatekosListBox.SelectedItem).Csapat.ToString();
         }
+        private void JatekosListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = ((Table)JatekosListBox.SelectedItem).Gol.ToString();
+        }
+        private void PosztComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var Id = ((Table2)PosztComboBox.SelectedItem).Poszt_Id;
+            var Jatekos = from x in context.Tables where x.Poszt_fk == Id select x;
+            JatekosListBox.DataSource = Jatekos.ToList();
+        }
+        
+        
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            var Id = ((Table2)PosztComboBox.SelectedItem).Poszt_Id;
+            
+
+            Jatekosok.RemoveAll(r => r.Poszt_fk == Id);
+           
+            
+
+            
+
+
+
+
+
+
+
+        }
+
+        
     }
 }

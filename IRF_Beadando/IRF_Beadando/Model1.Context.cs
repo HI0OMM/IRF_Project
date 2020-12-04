@@ -13,10 +13,10 @@ namespace IRF_Beadando
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database1Entities : DbContext
+    public partial class FociadatEntities : DbContext
     {
-        public Database1Entities()
-            : base("name=Database1Entities")
+        public FociadatEntities()
+            : base("name=FociadatEntities")
         {
         }
     
@@ -26,5 +26,6 @@ namespace IRF_Beadando
         }
     
         public virtual DbSet<Table> Tables { get; set; }
+        public virtual DbSet<Table2> Table2 { get; set; }
     }
 }

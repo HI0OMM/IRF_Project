@@ -20,11 +20,13 @@ namespace IRF_Beadando.Entities
         private void Gol_Paint(object sender, PaintEventArgs e)
         {
             DrawImage(e.Graphics);
-        }
 
+        }
         protected void DrawImage(Graphics g)
         {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
+            Image imageFile = Image.FromFile("Images/ball2.jpg");
+            g.DrawImage(imageFile, new Rectangle(0, 0, Width, Height));
+
         }
     }
 }

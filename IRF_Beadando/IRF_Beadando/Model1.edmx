@@ -4,58 +4,116 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FociadatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Table">
           <Key>
-            <PropertyRef Name="Jatekos_id" />
+            <PropertyRef Name="Jatekos_Id" />
           </Key>
-          <Property Name="Jatekos_id" Type="int" Nullable="false" />
+          <Property Name="Jatekos_Id" Type="int" Nullable="false" />
           <Property Name="Jatekos_nev" Type="nvarchar" MaxLength="30" />
-          <Property Name="Golok" Type="int" />
-          <Property Name="Golpasszok" Type="int" />
+          <Property Name="Gol" Type="int" />
+          <Property Name="Golpassz" Type="int" />
           <Property Name="Jatekperc" Type="decimal" Precision="6" Scale="0" />
-          <Property Name="Poszt" Type="nvarchar" MaxLength="30" />
+          <Property Name="Poszt_fk" Type="int" />
           <Property Name="Csapat" Type="nvarchar" MaxLength="30" />
         </EntityType>
-        <EntityContainer Name="Database1ModelStoreContainer">
+        <EntityType Name="Table2">
+          <Key>
+            <PropertyRef Name="Poszt_Id" />
+          </Key>
+          <Property Name="Poszt_Id" Type="int" Nullable="false" />
+          <Property Name="Poszt_nev" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_Table_ToTable2">
+          <End Role="Table2" Type="Self.Table2" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table2">
+              <PropertyRef Name="Poszt_Id" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="Poszt_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FociadatModelStoreContainer">
           <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table2" EntityType="Self.Table2" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Table_ToTable2" Association="Self.FK_Table_ToTable2">
+            <End Role="Table2" EntitySet="Table2" />
+            <End Role="Table" EntitySet="Table" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="FociadatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Table">
           <Key>
-            <PropertyRef Name="Jatekos_id" />
+            <PropertyRef Name="Jatekos_Id" />
           </Key>
-          <Property Name="Jatekos_id" Type="Int32" Nullable="false" />
+          <Property Name="Jatekos_Id" Type="Int32" Nullable="false" />
           <Property Name="Jatekos_nev" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Golok" Type="Int32" />
-          <Property Name="Golpasszok" Type="Int32" />
+          <Property Name="Gol" Type="Int32" />
+          <Property Name="Golpassz" Type="Int32" />
           <Property Name="Jatekperc" Type="Decimal" Precision="6" Scale="0" />
-          <Property Name="Poszt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Poszt_fk" Type="Int32" />
           <Property Name="Csapat" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Table2" Relationship="Self.FK_Table_ToTable2" FromRole="Table" ToRole="Table2" />
         </EntityType>
-        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="Table2">
+          <Key>
+            <PropertyRef Name="Poszt_Id" />
+          </Key>
+          <Property Name="Poszt_Id" Type="Int32" Nullable="false" />
+          <Property Name="Poszt_nev" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_Table_ToTable2" FromRole="Table2" ToRole="Table" />
+        </EntityType>
+        <Association Name="FK_Table_ToTable2">
+          <End Role="Table2" Type="Self.Table2" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table2">
+              <PropertyRef Name="Poszt_Id" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="Poszt_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FociadatEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="Table2" EntityType="Self.Table2" />
+          <AssociationSet Name="FK_Table_ToTable2" Association="Self.FK_Table_ToTable2">
+            <End Role="Table2" EntitySet="Table2" />
+            <End Role="Table" EntitySet="Tables" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+        <EntityContainerMapping StorageEntityContainer="FociadatModelStoreContainer" CdmEntityContainer="FociadatEntities">
           <EntitySetMapping Name="Tables">
-            <EntityTypeMapping TypeName="Database1Model.Table">
+            <EntityTypeMapping TypeName="FociadatModel.Table">
               <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="Jatekos_id" ColumnName="Jatekos_id" />
+                <ScalarProperty Name="Jatekos_Id" ColumnName="Jatekos_Id" />
                 <ScalarProperty Name="Jatekos_nev" ColumnName="Jatekos_nev" />
-                <ScalarProperty Name="Golok" ColumnName="Golok" />
-                <ScalarProperty Name="Golpasszok" ColumnName="Golpasszok" />
+                <ScalarProperty Name="Gol" ColumnName="Gol" />
+                <ScalarProperty Name="Golpassz" ColumnName="Golpassz" />
                 <ScalarProperty Name="Jatekperc" ColumnName="Jatekperc" />
-                <ScalarProperty Name="Poszt" ColumnName="Poszt" />
+                <ScalarProperty Name="Poszt_fk" ColumnName="Poszt_fk" />
                 <ScalarProperty Name="Csapat" ColumnName="Csapat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table2">
+            <EntityTypeMapping TypeName="FociadatModel.Table2">
+              <MappingFragment StoreEntitySet="Table2">
+                <ScalarProperty Name="Poszt_Id" ColumnName="Poszt_Id" />
+                <ScalarProperty Name="Poszt_nev" ColumnName="Poszt_nev" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

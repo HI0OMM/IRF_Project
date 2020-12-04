@@ -14,12 +14,14 @@ namespace IRF_Beadando
     
     public partial class Table
     {
-        public int Jatekos_id { get; set; }
+        public int Jatekos_Id { get; set; }
         public string Jatekos_nev { get; set; }
-        public Nullable<int> Golok { get; set; }
-        public Nullable<int> Golpasszok { get; set; }
+        public Nullable<int> Gol { get; set; }
+        public Nullable<int> Golpassz { get; set; }
         public Nullable<decimal> Jatekperc { get; set; }
-        public string Poszt { get; set; }
+        public Nullable<int> Poszt_fk { get; set; }
         public string Csapat { get; set; }
+    
+        public virtual Table2 Table2 { get; set; }
     }
 }
