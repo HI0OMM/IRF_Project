@@ -34,15 +34,15 @@
             this.button4 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.JatekosListBox = new System.Windows.Forms.ListBox();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.PosztComboBox = new System.Windows.Forms.ComboBox();
-            this.JatekosListBox = new System.Windows.Forms.ListBox();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(328, 11);
+            this.button1.Location = new System.Drawing.Point(311, 184);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 24);
             this.button1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(310, 169);
+            this.button2.Location = new System.Drawing.Point(12, 367);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 30);
             this.button2.TabIndex = 2;
@@ -62,7 +62,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(310, 306);
+            this.button3.Location = new System.Drawing.Point(214, 367);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(124, 30);
             this.button3.TabIndex = 3;
@@ -72,7 +72,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(310, 447);
+            this.button4.Location = new System.Drawing.Point(403, 367);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(124, 30);
             this.button4.TabIndex = 4;
@@ -82,7 +82,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(310, 57);
+            this.textBox1.Location = new System.Drawing.Point(12, 247);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(183, 22);
             this.textBox1.TabIndex = 5;
@@ -100,12 +100,22 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(558, 507);
+            this.mainPanel.Size = new System.Drawing.Size(558, 414);
             this.mainPanel.TabIndex = 6;
+            // 
+            // JatekosListBox
+            // 
+            this.JatekosListBox.FormattingEnabled = true;
+            this.JatekosListBox.ItemHeight = 16;
+            this.JatekosListBox.Location = new System.Drawing.Point(12, 12);
+            this.JatekosListBox.Name = "JatekosListBox";
+            this.JatekosListBox.Size = new System.Drawing.Size(262, 196);
+            this.JatekosListBox.TabIndex = 8;
+            this.JatekosListBox.SelectedIndexChanged += new System.EventHandler(this.JatekosListBox_SelectedIndexChanged);
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(151, 12);
+            this.DeleteButton.Location = new System.Drawing.Point(311, 116);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(140, 23);
             this.DeleteButton.TabIndex = 7;
@@ -116,27 +126,17 @@
             // PosztComboBox
             // 
             this.PosztComboBox.FormattingEnabled = true;
-            this.PosztComboBox.Location = new System.Drawing.Point(12, 12);
+            this.PosztComboBox.Location = new System.Drawing.Point(311, 12);
             this.PosztComboBox.Name = "PosztComboBox";
             this.PosztComboBox.Size = new System.Drawing.Size(121, 24);
             this.PosztComboBox.TabIndex = 6;
-            this.PosztComboBox.SelectedIndexChanged += new System.EventHandler(this.PosztComboBox_SelectedIndexChanged);
-            // 
-            // JatekosListBox
-            // 
-            this.JatekosListBox.FormattingEnabled = true;
-            this.JatekosListBox.ItemHeight = 16;
-            this.JatekosListBox.Location = new System.Drawing.Point(12, 57);
-            this.JatekosListBox.Name = "JatekosListBox";
-            this.JatekosListBox.Size = new System.Drawing.Size(262, 420);
-            this.JatekosListBox.TabIndex = 8;
-            this.JatekosListBox.SelectedIndexChanged += new System.EventHandler(this.JatekosListBox_SelectedIndexChanged);
+            
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 507);
+            this.ClientSize = new System.Drawing.Size(558, 414);
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
             this.Text = "Form1";

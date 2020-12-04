@@ -156,15 +156,13 @@ namespace IRF_Beadando
         }
         private void JatekosListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBox1.Text = ((Table)JatekosListBox.SelectedItem).Gol.ToString();
+            if (JatekosListBox.DataSource != null)
+            {
+                textBox1.Text = ((Table)JatekosListBox.SelectedItem).Gol.ToString();
+            }
+            
         }
-        private void PosztComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            var Id = ((Table2)PosztComboBox.SelectedItem).Poszt_Id;
-            var Jatekos = from x in context.Tables where x.Poszt_fk == Id select x;
-            JatekosListBox.DataSource = Jatekos.ToList();
-        }
+        
         
         
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -173,10 +171,13 @@ namespace IRF_Beadando
             
 
             Jatekosok.RemoveAll(r => r.Poszt_fk == Id);
-           
-            
+            JatekosListBox.DataSource = null;
+            JatekosListBox.DataSource = Jatekosok;
+            JatekosListBox.DisplayMember = "Jatekos_nev";
 
-            
+
+
+
 
 
 
