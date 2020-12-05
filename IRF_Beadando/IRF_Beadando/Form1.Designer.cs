@@ -130,7 +130,6 @@
             this.PosztComboBox.Name = "PosztComboBox";
             this.PosztComboBox.Size = new System.Drawing.Size(121, 24);
             this.PosztComboBox.TabIndex = 6;
-            
             // 
             // Form1
             // 
