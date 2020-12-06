@@ -42,9 +42,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(311, 184);
+            this.button1.Location = new System.Drawing.Point(311, 179);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 24);
+            this.button1.Size = new System.Drawing.Size(150, 29);
             this.button1.TabIndex = 0;
             this.button1.Text = "exportálás";
             this.button1.UseVisualStyleBackColor = true;
@@ -115,9 +115,9 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(311, 116);
+            this.DeleteButton.Location = new System.Drawing.Point(311, 91);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(140, 23);
+            this.DeleteButton.Size = new System.Drawing.Size(150, 29);
             this.DeleteButton.TabIndex = 7;
             this.DeleteButton.Text = "Listából törlés";
             this.DeleteButton.UseVisualStyleBackColor = true;

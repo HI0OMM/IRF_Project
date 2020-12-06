@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using IRF_Beadando.Entities;
+using System.IO;
 
 namespace IRF_Beadando
 {
@@ -92,6 +93,7 @@ namespace IRF_Beadando
                 
                 counter++;
                 xlSheet.get_Range(GetCell(2, 1), GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+                
                 Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
                 headerRange.Font.Bold = true;
                 headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
@@ -113,6 +115,7 @@ namespace IRF_Beadando
                 lastColRange.Interior.Color = Color.LightGreen;
                 lastColRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
                 lastColRange.NumberFormat = "$????.??";
+                
             }
             string GetCell(int x, int y)
             {
@@ -145,6 +148,7 @@ namespace IRF_Beadando
 
                 xlApp.Visible = true;
                 xlApp.UserControl = true;
+                xlWB.SaveAs(new FileInfo(@"c:\temp\Beadando.csv"));
             }
             catch (Exception ex)
             {
