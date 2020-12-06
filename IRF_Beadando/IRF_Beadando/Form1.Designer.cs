@@ -44,7 +44,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(311, 179);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 29);
+            this.button1.Size = new System.Drawing.Size(151, 29);
             this.button1.TabIndex = 0;
             this.button1.Text = "exportálás";
             this.button1.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(214, 367);
+            this.button3.Location = new System.Drawing.Point(171, 367);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(124, 30);
             this.button3.TabIndex = 3;
@@ -72,7 +72,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(403, 367);
+            this.button4.Location = new System.Drawing.Point(338, 367);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(124, 30);
             this.button4.TabIndex = 4;
@@ -100,7 +100,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(558, 414);
+            this.mainPanel.Size = new System.Drawing.Size(508, 414);
             this.mainPanel.TabIndex = 6;
             // 
             // JatekosListBox
@@ -117,7 +117,7 @@
             // 
             this.DeleteButton.Location = new System.Drawing.Point(311, 91);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(150, 29);
+            this.DeleteButton.Size = new System.Drawing.Size(151, 29);
             this.DeleteButton.TabIndex = 7;
             this.DeleteButton.Text = "Listából törlés";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -128,14 +128,14 @@
             this.PosztComboBox.FormattingEnabled = true;
             this.PosztComboBox.Location = new System.Drawing.Point(311, 12);
             this.PosztComboBox.Name = "PosztComboBox";
-            this.PosztComboBox.Size = new System.Drawing.Size(121, 24);
+            this.PosztComboBox.Size = new System.Drawing.Size(151, 24);
             this.PosztComboBox.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 414);
+            this.ClientSize = new System.Drawing.Size(508, 414);
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
             this.Text = "Form1";
